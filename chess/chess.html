@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess - Game Hub</title>
+    <link rel="stylesheet" href="chess.css">
+</head>
+<body>
+    <div class="top-nav" id="top-nav">
+        <a href="../index.html" class="back-btn">← Back to Hub</a>
+    </div>
+
+    <div class="chess-container" id="game-container">
+        <div class="board-pane" id="board-pane">
+            <div class="player-info opponent">
+                <div class="avatar">🤖</div>
+                <div class="details">
+                    <span class="name" id="opponent-name">Computer - Medium</span>
+                </div>
+                <div class="timer" id="timer-top">10:00</div>
+            </div>
+
+            <div class="board-wrapper">
+                <div id="chessboard" data-board="theme-1" data-piece="piece-1"></div>
+            </div>
+            <div class="player-info player">
+                <div class="avatar">👤</div>
+                <div class="details">
+                    <span class="name">Player 1</span>
+                </div>
+                <div class="timer" id="timer-bottom">10:00</div>
+            </div>
+        </div>
+
+        <div class="control-pane" id="control-pane">
+            <div class="session-bar-wrap">
+                <label>Game Sessions:</label>
+                <div id="game-sessions" class="game-sessions"></div>
+            </div>
+            <div class="tabs">
+                <button class="tab-btn active" data-target="tab-new">Game SetUp</button>
+                <button class="tab-btn" data-target="tab-settings">Settings</button>
+            </div>
+
+            <div id="tab-new" class="tab-content active">
+                <div class="settings-group">
+                    <label>Time Control:</label>
+                    <select id="time-select">
+                        <option value="5">5 min (Blitz)</option>
+                        <option value="10" selected>10 min (Rapid)</option>
+                        <option value="30">30 min (Classical)</option>
+                        <option value="unlimited">Unlimited</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label>Opponent:</label>
+                    <select id="opponent-select">
+                        <option value="local">Play a Friend (Local)</option>
+                        <option value="basic">Computer - Basic (Beginner)</option>
+                        <option value="medium" selected>Computer - Medium (40%)</option>
+                        <option value="friendly">Computer - Friendly (70%)</option>
+                        <option value="hard">Computer - Hard (100%)</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label>Play As:</label>
+                    <select id="color-select">
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                    </select>
+                </div>
+                <button class="btn-secondary" id="swap-btn">Swap Position (Play as Opponent)</button>
+                <button class="btn-secondary" id="fullscreen-btn">Toggle Full Screen</button>
+                <button class="btn-secondary" id="pause-btn">Pause</button>
+                <button class="btn-start" id="start-btn">Start Game</button>
+                <button class="btn-danger hidden" id="end-btn">End Game (Resign)</button>
+                <button class="btn-secondary" id="new-game-btn-setup">New Game</button>
+                <button class="btn-secondary" id="restart-setup-btn">Restart Setup</button>
+            </div>
+
+            <div id="tab-settings" class="tab-content hidden">
+                <div class="settings-group">
+                    <label>Board Theme (8 Options):</label>
+                    <select id="theme-select">
+                        <option value="theme-1" selected>1. Classic Green</option>
+                        <option value="theme-2">2. Tournament Blue</option>
+                        <option value="theme-3">3. Walnut Wood</option>
+                        <option value="theme-4">4. Coral Red</option>
+                        <option value="theme-5">5. Midnight Dark</option>
+                        <option value="theme-6">6. Royal Purple</option>
+                        <option value="theme-7">7. Mint Light</option>
+                        <option value="theme-8">8. Slate Monochrome</option>
+                    </select>
+                </div>
+                <div class="settings-group">
+                    <label>Piece Design (5 Options):</label>
+                    <select id="piece-select">
+                        <option value="piece-1" selected>1. Classic Obsidian/Ivory</option>
+                        <option value="piece-2">2. Neon Cyberpunk</option>
+                        <option value="piece-3">3. Gold & Silver</option>
+                        <option value="piece-4">4. Crimson & Navy</option>
+                        <option value="piece-5">5. Emerald & Ruby</option>
+                    </select>
+                </div>
+                <div class="settings-group checkbox-group">
+                    <input type="checkbox" id="show-moves-toggle" checked>
+                    <label for="show-moves-toggle">Show Valid Moves</label>
+                </div>
+                <div class="settings-group">
+                    <label>Game History:</label>
+                    <div id="game-history" class="game-history-list">
+                        <p class="no-history">No games played yet</p>
+                    </div>
+                    <button class="btn-secondary" id="clear-history-btn">Clear History</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="win-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="win-message">White Wins!</h2>
+            <button id="rematch-btn" class="btn-start">Play Again</button>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>

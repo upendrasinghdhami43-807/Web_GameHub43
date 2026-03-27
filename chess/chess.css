@@ -1,0 +1,106 @@
+:root {
+    --bg-main: #312e2b; --bg-panel: #262421;
+    --text-main: #ffffff; --text-muted: #bababa;
+    --accent-green: #81b64c; --accent-red: #c33;
+}
+
+/* 8 Board Themes */
+[data-board="theme-1"] { --light-sq: #ebecd0; --dark-sq: #779556; } /* Classic */
+[data-board="theme-2"] { --light-sq: #dee3e6; --dark-sq: #8ca2ad; } /* Blue */
+[data-board="theme-3"] { --light-sq: #f0d9b5; --dark-sq: #b58863; } /* Wood */
+[data-board="theme-4"] { --light-sq: #b0e0e6; --dark-sq: #f08080; } /* Coral */
+[data-board="theme-5"] { --light-sq: #737373; --dark-sq: #404040; } /* Midnight */
+[data-board="theme-6"] { --light-sq: #e1d5e6; --dark-sq: #8877b7; } /* Purple */
+[data-board="theme-7"] { --light-sq: #dff4d2; --dark-sq: #82b366; } /* Mint */
+[data-board="theme-8"] { --light-sq: #c0c0c0; --dark-sq: #808080; } /* Slate */
+
+/* 5 Piece Themes (Colors & Shadows) */
+/* 1. Classic */
+[data-piece="piece-1"] .piece.white { color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+[data-piece="piece-1"] .piece.black { color: #1a1a1a; text-shadow: 0 1px 2px rgba(255,255,255,0.3); }
+/* 2. Neon */
+[data-piece="piece-2"] .piece.white { color: #0ff; text-shadow: 0 0 10px #0ff; }
+[data-piece="piece-2"] .piece.black { color: #f0f; text-shadow: 0 0 10px #f0f; }
+/* 3. Gold/Silver */
+[data-piece="piece-3"] .piece.white { color: #e6e8fa; text-shadow: 0 2px 5px #aaa; }
+[data-piece="piece-3"] .piece.black { color: #ffd700; text-shadow: 0 2px 5px #8b6508; }
+/* 4. Crimson/Navy */
+[data-piece="piece-4"] .piece.white { color: #000080; text-shadow: 0 2px 4px #000; }
+[data-piece="piece-4"] .piece.black { color: #dc143c; text-shadow: 0 2px 4px #000; }
+/* 5. Emerald/Ruby */
+[data-piece="piece-5"] .piece.white { color: #50c878; text-shadow: 0 2px 4px #000; }
+[data-piece="piece-5"] .piece.black { color: #e0115f; text-shadow: 0 2px 4px #000; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; }
+
+body { background-color: var(--bg-main); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; overflow-x: hidden; }
+
+.top-nav { width: 100%; padding: 15px; background-color: var(--bg-panel); }
+.back-btn { color: var(--text-muted); text-decoration: none; font-weight: bold; }
+
+.chess-container { display: flex; gap: 20px; max-width: 1000px; width: 100%; padding: 20px; transition: all 0.3s; }
+
+/* Left Pane */
+.board-pane { display: flex; flex-direction: column; gap: 10px; flex: 1; transition: all 0.3s; }
+.player-info { display: flex; align-items: center; background-color: var(--bg-panel); padding: 10px 15px; border-radius: 5px; gap: 15px; }
+.avatar { font-size: 24px; background: #403d39; padding: 5px; border-radius: 4px; }
+.details { flex-grow: 1; font-weight: bold; }
+.timer { background: #000; color: #fff; padding: 5px 15px; font-size: 24px; font-weight: bold; border-radius: 4px; font-family: monospace; }
+
+.board-wrapper { display: flex; justify-content: center; }
+#chessboard { display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); width: 100%; max-width: 600px; aspect-ratio: 1; border: 4px solid var(--bg-panel); border-radius: 4px; }
+
+.square { display: flex; justify-content: center; align-items: center; font-size: 3.5rem; cursor: pointer; user-select: none; position: relative; aspect-ratio: 1; }
+.square.light { background-color: var(--light-sq); }
+.square.dark { background-color: var(--dark-sq); }
+.square.selected { background-color: rgba(255, 255, 51, 0.6); }
+
+/* Move Indicators */
+.square.valid-move::after { content: ''; position: absolute; width: 25%; height: 25%; background-color: rgba(0, 0, 0, 0.3); border-radius: 50%; pointer-events: none; }
+.square.valid-move.has-piece::after { width: 80%; height: 80%; background-color: transparent; border: 5px solid rgba(0, 0, 0, 0.3); }
+
+/* Right Pane Controls */
+.control-pane { width: 320px; background-color: var(--bg-panel); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.tabs { display: flex; border-bottom: 2px solid #403d39; margin-bottom: 10px; }
+.tabs button { flex: 1; background: none; border: none; color: var(--text-muted); padding: 10px; cursor: pointer; font-weight: bold; }
+.tabs button.active { color: white; border-bottom: 3px solid white; }
+.tab-content { display: flex; flex-direction: column; gap: 15px; }
+.hidden { display: none !important; }
+
+.settings-group { display: flex; flex-direction: column; gap: 5px; }
+label { font-size: 14px; color: var(--text-muted); }
+select { padding: 12px; background: #403d39; color: white; border: none; border-radius: 5px; outline: none; }
+.checkbox-group { flex-direction: row; align-items: center; gap: 10px; margin-top: 5px; }
+
+.session-bar-wrap { display: flex; flex-direction: column; gap: 8px; }
+.game-sessions { display: flex; gap: 8px; flex-wrap: wrap; max-height: 90px; overflow-y: auto; }
+.session-chip { display: inline-flex; align-items: center; gap: 8px; background: #403d39; color: #fff; border: 1px solid #595450; border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer; }
+.session-chip.active { border-color: var(--accent-green); box-shadow: 0 0 0 1px var(--accent-green) inset; }
+.session-chip button { background: transparent; color: #ddd; border: none; cursor: pointer; font-size: 14px; line-height: 1; }
+.session-chip button:hover { color: #fff; }
+
+.btn-start { background-color: var(--accent-green); color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+.btn-new-game { background-color: var(--accent-green); color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 10px; width: 100%; }
+.btn-danger { background-color: var(--accent-red); color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+.btn-secondary { background-color: #403d39; color: var(--text-muted); border: none; padding: 12px; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+
+/* Game History Styles */
+.game-history-list { max-height: 200px; overflow-y: auto; background: #403d39; border-radius: 5px; padding: 10px; }
+.no-history { color: var(--text-muted); text-align: center; font-size: 12px; }
+.history-item { background: #312e2b; padding: 10px; margin-bottom: 8px; border-radius: 4px; border-left: 4px solid var(--accent-green); }
+.history-result { font-weight: bold; color: var(--accent-green); font-size: 12px; }
+.history-details { display: flex; gap: 10px; font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+.history-details span { padding: 2px 6px; background: #403d39; border-radius: 3px; }
+.history-date { font-size: 10px; color: #888; margin-top: 5px; }
+
+/* Full Screen Mode Adjustments */
+body.fullscreen-mode .top-nav, body.fullscreen-mode .control-pane { display: none; }
+body.fullscreen-mode .chess-container { max-width: 800px; justify-content: center; align-items: center; height: 100vh; margin: 0; padding: 0; }
+body.fullscreen-mode .board-pane { max-width: 700px; width: 100%; }
+
+/* Modal */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: var(--bg-panel); padding: 40px; border-radius: 10px; text-align: center; }
+.modal-content h2 { margin-bottom: 20px; font-size: 28px; }
+
+@media (max-width: 800px) { .chess-container { flex-direction: column; } .control-pane { width: 100%; } }
