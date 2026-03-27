@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Tiger Goat (Bagh Chal) strategy game.">
+	<title>Tiger Goat | Game Hub</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="tiger.css">
+</head>
+
+<body>
+	<header class="topbar">
+		<a href="../original main/index.html" class="back-link">← Back to Hub</a>
+		<div>
+			<h1>Tiger Goat</h1>
+			<p>Bagh Chal: hunt or trap on a 5x5 board.</p>
+		</div>
+	</header>
+
+	<main class="layout">
+		<section class="controls card">
+			<h2>Game Setup</h2>
+
+			<label for="side-select">Play as</label>
+			<select id="side-select">
+				<option value="goat">Goat</option>
+				<option value="tiger">Tiger</option>
+			</select>
+
+			<label for="opponent-select">Opponent</label>
+			<select id="opponent-select">
+				<option value="human">Human vs Human</option>
+				<option value="computer">Human vs Computer</option>
+			</select>
+
+			<label for="difficulty-select">Computer Difficulty</label>
+			<select id="difficulty-select">
+				<option value="basic">Basic</option>
+				<option value="medium">Medium</option>
+				<option value="hard">Hard</option>
+			</select>
+
+			<div class="button-row">
+				<button id="start-btn" class="primary">Start New Match</button>
+				<button id="reset-btn" class="ghost">Reset Board</button>
+			</div>
+		</section>
+
+		<section class="board-panel card">
+			<div class="status-grid">
+				<p id="status-text">Turn: Goat (Placement phase)</p>
+				<p id="goats-left-text">Goats left to place: 20</p>
+				<p id="captured-text">Goats captured: 0 / 5</p>
+			</div>
+
+			<div class="board-wrap" id="board-wrap">
+				<svg id="board-lines" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+				<div id="board-nodes" class="board-nodes"></div>
+			</div>
+
+			<p class="hint">Tip: during movement, select a piece first, then choose a highlighted destination.</p>
+		</section>
+	</main>
+
+	<script src="tiger.js"></script>
+</body>
+
+</html>

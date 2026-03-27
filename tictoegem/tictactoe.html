@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tic Tac Toe — A premium strategy game. Created by Sundar Dhami.">
+    <title>Tic Tac Toe | Sundar Dhami</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tictactoe.css">
+</head>
+
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="ttt-header">
+        <a href="../original main/index.html" class="back-home" id="back-home">← Back to Hub</a>
+        <div class="logo">
+            <span class="logo-icon">❌⭕</span>
+            <h1 class="logo-text">Tic Tac <span class="logo-accent">Toe</span></h1>
+        </div>
+        <p class="logo-credit">Created by <strong>Sundar Dhami</strong></p>
+    </header>
+
+    <!-- ============ MODE SELECT ============ -->
+    <section id="ttt-mode" class="ttt-screen active">
+        <h2 class="ttt-title">Choose Your Mode</h2>
+        <div class="ttt-mode-cards">
+            <button class="ttt-mode-card" id="btn-ttt-cpu" onclick="showDifficulty()">
+                <span class="ttt-mode-icon">🤖</span>
+                <span class="ttt-mode-name">vs Computer</span>
+                <span class="ttt-mode-sub">You are ❌ · AI is ⭕</span>
+            </button>
+            <button class="ttt-mode-card" id="btn-ttt-pvp" onclick="startGame('pvp')">
+                <span class="ttt-mode-icon">👥</span>
+                <span class="ttt-mode-name">vs Friend</span>
+                <span class="ttt-mode-sub">Player 1 ❌ · Player 2 ⭕</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ============ DIFFICULTY SELECT ============ -->
+    <section id="ttt-difficulty" class="ttt-screen">
+        <button class="ttt-back" onclick="backToMode()">← Back</button>
+        <h2 class="ttt-title">Select Difficulty</h2>
+        <div class="ttt-diff-cards">
+            <button class="ttt-diff-card diff-easy" onclick="startGame('cpu','easy')">
+                <span class="ttt-diff-icon">🟢</span>
+                <span class="ttt-diff-name">Basic</span>
+                <span class="ttt-diff-desc">AI makes random moves · Easy to win</span>
+            </button>
+            <button class="ttt-diff-card diff-medium" onclick="startGame('cpu','medium')">
+                <span class="ttt-diff-icon">🟡</span>
+                <span class="ttt-diff-name">Medium</span>
+                <span class="ttt-diff-desc">AI plays smart 60% of the time</span>
+            </button>
+            <button class="ttt-diff-card diff-hard" onclick="startGame('cpu','hard')">
+                <span class="ttt-diff-icon">🔴</span>
+                <span class="ttt-diff-name">Hard</span>
+                <span class="ttt-diff-desc">Unbeatable AI · Perfect play</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ============ GAME BOARD ============ -->
+    <section id="ttt-game" class="ttt-screen">
+        <div class="ttt-game-header">
+            <button class="ttt-back" onclick="backToMode()">← Back</button>
+            <div class="ttt-score-row">
+                <div class="ttt-score-card x-card">
+                    <span class="ttt-score-symbol">❌</span>
+                    <span class="ttt-score-label" id="x-label">Player 1</span>
+                    <span class="ttt-score-val" id="score-x">0</span>
+                </div>
+                <div class="ttt-score-card draw-card">
+                    <span class="ttt-score-symbol">🤝</span>
+                    <span class="ttt-score-label">Draw</span>
+                    <span class="ttt-score-val" id="score-draw">0</span>
+                </div>
+                <div class="ttt-score-card o-card">
+                    <span class="ttt-score-symbol">⭕</span>
+                    <span class="ttt-score-label" id="o-label">Player 2</span>
+                    <span class="ttt-score-val" id="score-o">0</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="ttt-turn-text" id="turn-text">❌ Your turn</p>
+
+        <div class="ttt-board" id="ttt-board">
+            <button class="ttt-cell" data-i="0" onclick="cellClick(0)"></button>
+            <button class="ttt-cell" data-i="1" onclick="cellClick(1)"></button>
+            <button class="ttt-cell" data-i="2" onclick="cellClick(2)"></button>
+            <button class="ttt-cell" data-i="3" onclick="cellClick(3)"></button>
+            <button class="ttt-cell" data-i="4" onclick="cellClick(4)"></button>
+            <button class="ttt-cell" data-i="5" onclick="cellClick(5)"></button>
+            <button class="ttt-cell" data-i="6" onclick="cellClick(6)"></button>
+            <button class="ttt-cell" data-i="7" onclick="cellClick(7)"></button>
+            <button class="ttt-cell" data-i="8" onclick="cellClick(8)"></button>
+            <!-- Win line SVG overlay -->
+            <svg class="ttt-win-line" id="win-line" viewBox="0 0 300 300">
+                <line id="wl" x1="0" y1="0" x2="0" y2="0" />
+            </svg>
+        </div>
+
+        <!-- Result overlay -->
+        <div class="ttt-result hidden" id="ttt-result">
+            <p class="ttt-result-text" id="ttt-result-text"></p>
+            <button class="ttt-play-again" onclick="resetBoard()">Play Again</button>
+        </div>
+    </section>
+
+    <script src="tictactoe.js"></script>
+</body>
+
+</html>

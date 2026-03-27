@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone Rock Paper Scissors game.">
+    <title>Rock Paper Scissors | Game Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Bricolage+Grotesque:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rockpaper.css">
+</head>
+
+<body>
+    <header class="rps-header">
+        <a class="back-home" href="../original main/index.html">← Back to Hub</a>
+        <h1>Rock Paper Scissors</h1>
+        <p>Pick a mode and play instantly.</p>
+    </header>
+
+    <main class="rps-shell">
+        <section id="mode-select" class="panel active">
+            <h2>Select Mode</h2>
+            <div class="mode-grid">
+                <button class="mode-card" data-mode="computer">
+                    <span class="mode-emoji">🤖</span>
+                    <span class="mode-title">vs Computer</span>
+                    <span class="mode-sub">Challenge random AI rounds</span>
+                </button>
+                <button class="mode-card" data-mode="human">
+                    <span class="mode-emoji">👥</span>
+                    <span class="mode-title">vs Human</span>
+                    <span class="mode-sub">Two players, same device</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="computer-mode" class="panel hidden">
+            <button class="panel-back" id="from-computer">← Back</button>
+            <h2>You vs Computer</h2>
+            <div class="score-row">
+                <div class="score-card"><span>Wins</span><strong id="c-wins">0</strong></div>
+                <div class="score-card"><span>Losses</span><strong id="c-losses">0</strong></div>
+                <div class="score-card"><span>Draws</span><strong id="c-draws">0</strong></div>
+            </div>
+            <div class="choice-row" id="computer-choices">
+                <button class="choice-btn" data-choice="rock">🪨<small>Rock</small></button>
+                <button class="choice-btn" data-choice="paper">📄<small>Paper</small></button>
+                <button class="choice-btn" data-choice="scissors">✂️<small>Scissors</small></button>
+            </div>
+            <div id="c-result" class="result-box hidden">
+                <p><span id="c-you-pick"></span> vs <span id="c-comp-pick"></span></p>
+                <h3 id="c-result-text"></h3>
+            </div>
+        </section>
+
+        <section id="human-mode" class="panel hidden">
+            <button class="panel-back" id="from-human">← Back</button>
+            <h2>Human vs Human</h2>
+            <div class="human-grid" id="human-pick-phase">
+                <article class="human-side" id="side-a">
+                    <h3>Group A</h3>
+                    <div class="choice-row">
+                        <button class="choice-btn" data-player="A" data-choice="rock">🪨<small>Rock</small></button>
+                        <button class="choice-btn" data-player="A" data-choice="paper">📄<small>Paper</small></button>
+                        <button class="choice-btn" data-player="A" data-choice="scissors">✂️<small>Scissors</small></button>
+                    </div>
+                    <p id="status-a">Waiting for pick...</p>
+                </article>
+                <article class="human-side" id="side-b">
+                    <h3>Group B</h3>
+                    <div class="choice-row">
+                        <button class="choice-btn" data-player="B" data-choice="rock">🪨<small>Rock</small></button>
+                        <button class="choice-btn" data-player="B" data-choice="paper">📄<small>Paper</small></button>
+                        <button class="choice-btn" data-player="B" data-choice="scissors">✂️<small>Scissors</small></button>
+                    </div>
+                    <p id="status-b">Waiting for pick...</p>
+                </article>
+            </div>
+            <div id="h-result" class="result-box hidden">
+                <p><span id="h-a-pick"></span> vs <span id="h-b-pick"></span></p>
+                <h3 id="h-result-text"></h3>
+                <button class="play-again-btn" id="play-again">Play Again</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="rokepaper.js"></script>
+</body>
+
+</html>

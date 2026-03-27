@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Game Hub directory for Rock Paper Scissors, Tic Tac Toe, and Tiger Goat.">
+    <title>Game Hub | Upendra Labs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+
+    <header class="hub-header">
+        <p class="eyebrow">UPENDRA LABS</p>
+        <h1>Game Hub Directory</h1>
+        <p class="subhead">Pick a game from the list and launch it in its own isolated page.</p>
+    </header>
+
+    <main class="hub-feed" id="hub-feed">
+        <article class="game-card reveal">
+            <div class="game-meta">
+                <span class="game-badge">01</span>
+                <h2>Rock Paper Scissors</h2>
+                <p>Fast rounds, instant feedback, and both human-vs-human and human-vs-computer modes.</p>
+            </div>
+            <a class="play-link" href="../rockpaper/rockpaper.html">Play Rock Paper Scissors</a>
+        </article>
+
+        <article class="game-card reveal">
+            <div class="game-meta">
+                <span class="game-badge">02</span>
+                <h2>Tic Tac Toe</h2>
+                <p>Classic 3x3 strategy with selectable AI difficulty and clean score tracking.</p>
+            </div>
+            <a class="play-link" href="../tictoegem/tictactoe.html">Play Tic Tac Toe</a>
+        </article>
+
+        <article class="game-card reveal">
+            <div class="game-meta">
+                <span class="game-badge">03</span>
+                <h2>Tiger Goat</h2>
+                <p>Asymmetric board game with placement and movement phases, including computer play.</p>
+            </div>
+            <a class="play-link" href="../tigergoat/tiger.html">Play Tiger Goat</a>
+        </article>
+
+        <section class="about-box reveal" id="about-games">
+            <h3>About the Games</h3>
+            <p><strong>Rock-Paper-Scissors:</strong> A quick game of chance and psychology.</p>
+            <p><strong>Tic-Tac-Toe:</strong> A classic 3x3 grid game of strategy.</p>
+            <p><strong>Tiger Goat:</strong> A traditional strategic board game of hunting and blocking.</p>
+        </section>
+    </main>
+
+    <footer class="hub-footer">
+        <a href="#about-games">Jump to Notes</a>
+        <span id="year"></span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
